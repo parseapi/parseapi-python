@@ -166,6 +166,9 @@ class ParseAPI:
     def timezone(self, id: str, *, at: Optional[str] = None) -> Json:
         return self._get(f"/timezone/{_seg(id)}", {"at": at})
 
+    def language(self, code: str) -> Json:
+        return self._get(f"/language/{_seg(code)}")
+
     def elevation(self, lat: float, lon: float) -> Json:
         return self._get("/elevation", {"lat": lat, "lon": lon})
 
@@ -226,6 +229,9 @@ class _CitySync:
 
     def __call__(self, name: str, *, country: Optional[str] = None, state: Optional[str] = None) -> Json:
         return self._client._get(f"/city/{_seg(name)}", {"country": country, "state": state})
+
+    def id(self, id: str) -> Json:
+        return self._client._get(f"/city/id/{_seg(id)}")
 
     def search(
         self,
@@ -377,6 +383,9 @@ class AsyncParseAPI:
     async def timezone(self, id: str, *, at: Optional[str] = None) -> Json:
         return await self._get(f"/timezone/{_seg(id)}", {"at": at})
 
+    async def language(self, code: str) -> Json:
+        return await self._get(f"/language/{_seg(code)}")
+
     async def elevation(self, lat: float, lon: float) -> Json:
         return await self._get("/elevation", {"lat": lat, "lon": lon})
 
@@ -437,6 +446,9 @@ class _CityAsync:
 
     async def __call__(self, name: str, *, country: Optional[str] = None, state: Optional[str] = None) -> Json:
         return await self._client._get(f"/city/{_seg(name)}", {"country": country, "state": state})
+
+    async def id(self, id: str) -> Json:
+        return await self._client._get(f"/city/id/{_seg(id)}")
 
     async def search(
         self,

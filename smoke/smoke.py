@@ -56,7 +56,12 @@ expect_ok("country.states", lambda: parse.country.states("US"), lambda r: None i
 expect_ok("state", lambda: parse.state("NC", country="US"), lambda r: None if r["name"] == "North Carolina" else "wrong")
 expect_ok("state.districts", lambda: parse.state.districts("NC", country="US"), lambda r: None if r["districts"] else "empty")
 expect_ok("district", lambda: parse.district("37081"), lambda r: None if "Guilford" in r["name"] else "wrong district")
-expect_ok("city", lambda: parse.city("charlotte", country="US"), lambda r: None if r["name"] == "Charlotte" else "wrong city")
+expect_ok("city", lambda: parse.city("charlotte", country="US"), lambda r: None if r["name"] == "Charlotte" and str(r.get("id", "")).startswith("city_") else "wrong city")
+expect_ok(
+    "city.id",
+    lambda: parse.city.id(parse.city("charlotte", country="US")["id"]),
+    lambda r: None if r["name"] == "Charlotte" else "wrong city",
+)
 expect_ok("city.search", lambda: parse.city.search("char", country="US", limit=5), lambda r: None if r["cities"] else "empty")
 expect_ok("city.nearest", lambda: parse.city.nearest(35.2271, -80.8431), lambda r: None if "distance" in r else "no distance")
 expect_ok("postal", lambda: parse.postal("28202", country="US"), lambda r: None if r["city"] == "Charlotte" else "wrong city")
@@ -73,6 +78,11 @@ expect_ok("mx", lambda: parse.mx("gmail.com"), lambda r: None if r["mx"] else "n
 expect_ok("useragent", lambda: parse.useragent(UA), lambda r: None if r["browser"] == "Chrome" else f"browser {r['browser']}")
 expect_ok("currency", lambda: parse.currency("USD"), lambda r: None if r["symbol"] == "$" else "wrong symbol")
 expect_ok("currency.rate", lambda: parse.currency.rate("USD", "EUR"), lambda r: None if 0 < r["rate"] < 10 else "bad rate")
+expect_ok(
+    "language",
+    lambda: parse.language("en"),
+    lambda r: None if r.get("language") == "en" and r.get("name") == "English" else "wrong language",
+)
 expect_ok(
     "timezone",
     lambda: parse.timezone("America/New_York"),
