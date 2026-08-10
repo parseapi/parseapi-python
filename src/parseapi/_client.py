@@ -175,8 +175,8 @@ class ParseAPI:
     def point(self, lat: float, lon: float, *, deep: bool = False) -> Json:
         return self._get("/point", {"lat": lat, "lon": lon, "deep": deep})
 
-    def weather(self, lat: float, lon: float, *, unit: Optional[str] = None, deep: bool = False) -> Json:
-        return self._get("/weather", {"lat": lat, "lon": lon, "unit": unit, "deep": deep})
+    def weather(self, lat: float, lon: float, *, deep: bool = False) -> Json:
+        return self._get("/weather", {"lat": lat, "lon": lon, "deep": deep})
 
 
 class _IpSync:
@@ -392,8 +392,8 @@ class AsyncParseAPI:
     async def point(self, lat: float, lon: float, *, deep: bool = False) -> Json:
         return await self._get("/point", {"lat": lat, "lon": lon, "deep": deep})
 
-    async def weather(self, lat: float, lon: float, *, unit: Optional[str] = None, deep: bool = False) -> Json:
-        return await self._get("/weather", {"lat": lat, "lon": lon, "unit": unit, "deep": deep})
+    async def weather(self, lat: float, lon: float, *, deep: bool = False) -> Json:
+        return await self._get("/weather", {"lat": lat, "lon": lon, "deep": deep})
 
 
 class _IpAsync:

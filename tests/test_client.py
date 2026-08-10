@@ -60,8 +60,8 @@ URL_TABLE = [
     (lambda p: p.elevation(35.2, -80.8), "https://api.parseapi.com/elevation?lat=35.2&lon=-80.8"),
     (lambda p: p.point(36.0726, -79.792, deep=True), "https://api.parseapi.com/point?lat=36.0726&lon=-79.792&deep=true"),
     (
-        lambda p: p.weather(40.7128, -74.006, unit="imperial"),
-        "https://api.parseapi.com/weather?lat=40.7128&lon=-74.006&unit=imperial",
+        lambda p: p.weather(40.7128, -74.006, deep=True),
+        "https://api.parseapi.com/weather?lat=40.7128&lon=-74.006&deep=true",
     ),
     (lambda p: p.emoji("rocket"), "https://api.parseapi.com/emoji/rocket"),
     (lambda p: p.emoji.search("fire", limit=20), "https://api.parseapi.com/emoji?q=fire&limit=20"),
