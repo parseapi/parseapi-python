@@ -73,7 +73,7 @@ Pass `deep=True` to include the nested `deep` object with richer fields.
 
 ```python
 ip = parse.ip("52.94.76.10", deep=True)
-ip["deep"]["is_datacenter"]  # True
+ip["deep"]["datacenter"]  # True
 ```
 
 ## Errors
