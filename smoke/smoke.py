@@ -48,7 +48,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
 parse = ParseAPI()
 
 expect_ok("ip", lambda: parse.ip("8.8.8.8"), lambda r: None if r["ip"] == "8.8.8.8" else "wrong ip")
-expect_ok("ip.me", lambda: parse.ip.me(), lambda r: None if r.get("ip") else "no ip")
+expect_ok("ip.self", lambda: parse.ip.self(), lambda r: None if r.get("ip") else "no ip")
 expect_ok("continent", lambda: parse.continent("NA"), lambda r: None if r["name"] == "North America" else "wrong name")
 expect_ok("continent.countries", lambda: parse.continent.countries("NA"), lambda r: None if r["countries"] else "empty")
 expect_ok("country", lambda: parse.country("US"), lambda r: None if r["iso3"] == "USA" else "wrong iso3")

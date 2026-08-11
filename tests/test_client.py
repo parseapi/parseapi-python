@@ -24,7 +24,7 @@ def ok(body=None):
 
 URL_TABLE = [
     (lambda p: p.ip("8.8.8.8"), "https://api.parseapi.com/ip/8.8.8.8"),
-    (lambda p: p.ip.me(), "https://api.parseapi.com/ip/me"),
+    (lambda p: p.ip.self(), "https://api.parseapi.com/ip"),
     (lambda p: p.ip("8.8.8.8", deep=True), "https://api.parseapi.com/ip/8.8.8.8?deep=true"),
     (lambda p: p.continent("NA"), "https://api.parseapi.com/continent/NA"),
     (lambda p: p.continent.countries("NA"), "https://api.parseapi.com/continent/NA/countries"),
@@ -195,8 +195,8 @@ def test_async_client():
         client = AsyncParseAPI("k", transport=httpx.MockTransport(record))
         result = await client.country("US")
         assert result["iso3"] == "USA"
-        ip_result = await client.ip.me(deep=True)
-        assert str(calls[1].url) == "https://api.parseapi.com/ip/me?deep=true"
+        ip_result = await client.ip.self(deep=True)
+        assert str(calls[1].url) == "https://api.parseapi.com/ip?deep=true"
         await client.close()
 
     asyncio.run(run())

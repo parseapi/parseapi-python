@@ -186,8 +186,8 @@ class _IpSync:
     def __call__(self, ip: str, *, deep: bool = False) -> Json:
         return self._client._get(f"/ip/{_seg(ip)}", {"deep": deep})
 
-    def me(self, *, deep: bool = False) -> Json:
-        return self._client._get("/ip/me", {"deep": deep})
+    def self(self, *, deep: bool = False) -> Json:
+        return self._client._get("/ip", {"deep": deep})
 
 
 class _ContinentSync:
@@ -403,8 +403,8 @@ class _IpAsync:
     async def __call__(self, ip: str, *, deep: bool = False) -> Json:
         return await self._client._get(f"/ip/{_seg(ip)}", {"deep": deep})
 
-    async def me(self, *, deep: bool = False) -> Json:
-        return await self._client._get("/ip/me", {"deep": deep})
+    async def self(self, *, deep: bool = False) -> Json:
+        return await self._client._get("/ip", {"deep": deep})
 
 
 class _ContinentAsync:

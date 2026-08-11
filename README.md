@@ -21,7 +21,7 @@ One method per endpoint, named after the route.
 
 ```python
 parse.ip("8.8.8.8")
-parse.ip.me()
+parse.ip.self()
 parse.email("hello@gmail.com")
 parse.phone("+14155552671")
 parse.postal("28202", country="US")
