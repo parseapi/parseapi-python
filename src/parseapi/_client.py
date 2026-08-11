@@ -294,8 +294,8 @@ class _EmojiSync:
     def __init__(self, client: ParseAPI):
         self._client = client
 
-    def __call__(self, query: str) -> Json:
-        return self._client._get(f"/emoji/{_seg(query)}")
+    def __call__(self, emoji: str) -> Json:
+        return self._client._get(f"/emoji/{_seg(emoji)}")
 
     def search(self, q: str, *, limit: Optional[int] = None) -> Json:
         return self._client._get("/emoji", {"q": q, "limit": limit})
@@ -513,8 +513,8 @@ class _EmojiAsync:
     def __init__(self, client: AsyncParseAPI):
         self._client = client
 
-    async def __call__(self, query: str) -> Json:
-        return await self._client._get(f"/emoji/{_seg(query)}")
+    async def __call__(self, emoji: str) -> Json:
+        return await self._client._get(f"/emoji/{_seg(emoji)}")
 
     async def search(self, q: str, *, limit: Optional[int] = None) -> Json:
         return await self._client._get("/emoji", {"q": q, "limit": limit})
