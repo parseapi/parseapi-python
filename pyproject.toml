@@ -32,7 +32,7 @@ classifiers = [
 [project.urls]
 Homepage = "https://parseapi.com"
 Documentation = "https://parseapi.com/docs"
-Repository = "https://github.com/parseapi/parseapi-python"
+Repository = "https://github.com/parseapi/python"
 
 [dependency-groups]
 dev = ["pytest>=8"]
