@@ -84,6 +84,11 @@ expect_ok(
     lambda r: None if r.get("language") == "en" and r.get("name") == "English" else "wrong language",
 )
 expect_ok(
+    "name",
+    lambda: parse.name("BILLY O'SHALL"),
+    lambda r: None if r["name"] == "Billy O'Shall" and r["valid"] is True and r["gender"] == "male" else "wrong name",
+)
+expect_ok(
     "timezone",
     lambda: parse.timezone("America/New_York"),
     lambda r: None if r["offset_minutes"] in (-240, -300) else f"offset {r['offset_minutes']}",
